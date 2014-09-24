@@ -1,50 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <body>
+<table width="200" height="400">
+  <tr>
+    <td><input type="text" id="calcPanel"></td>
+  </tr>
+</table>
+<table width="200" height="200">
+  <tr>
+    <td></td>
+    <td></td>
+     <td></td>
+     <td><input type="button" value="C"  onclick="handleClickInput(this,'calcPanel')"></td>
+  </tr>
+  <tr>
+    <td><input type="button" value="7" onclick="handleClickInput(this,'calcPanel')"></td>
+    <td><input type="button" value="8" onclick="handleClickInput(this,'calcPanel')"></td>
+    <td><input type="button" value="9" onclick="handleClickInput(this,'calcPanel')"></td>
+     <td><input type="button" value="/" onclick="handleClickInput(this,'calcPanel')"></td>
+  </tr>
+  <tr>
+    <td><input type="button" value="4" onclick="handleClickInput(this,'calcPanel')"></td>
+    <td><input type="button" value="5" onclick="handleClickInput(this,'calcPanel')"></td>
+    <td><input type="button" value="6" onclick="handleClickInput(this,'calcPanel')"></td>
+     <td><input type="button" value="*" onclick="handleClickInput(this,'calcPanel')"></td>
+  </tr>
+  <tr>
+    <td><input type="button" value="1" onclick="handleClickInput(this,'calcPanel')"></td>
+    <td><input type="button" value="2" onclick="handleClickInput(this,'calcPanel')"></td>
+    <td><input type="button" value="3" onclick="handleClickInput(this,'calcPanel')"></td>
+     <td><input type="button" value="-" onclick="handleClickInput(this,'calcPanel')"></td>
+  </tr>
+  <tr>
+    <td><input type="button" value="0" onclick="handleClickInput(this,'calcPanel')"></td>
+    <td><input type="button" value="." onclick="handleClickInput(this,'calcPanel')"></td>
+    <td><input type="button" value="+" onclick="handleClickInput(this,'calcPanel')"></td>
+     <td><input type="button" value="=" onclick="handleClickInput(this,'calcPanel')"></td>
+  </tr>
+</table>
 <p id="demo"></p>
-
+<script src="calculator.js"></script>
 <script>
-function dataObject(){
-	this.latestOperator = null;
-	this.prevOperand = "";
-	this.curOperand = "";
-}
-var data = new dataObject();
-function handleClickInput(button){
-	var btValue = button.value;
-	handleCalculator(btValue);
-}
-function handleCalculator(btValue){
-	if(btValue=="+" || btValue=="-"){
-		if(data.curOperand!=""){
-			data.latestOperator = btValue;
-			data.prevOperand = data.curOperand;
-			data.curOperand = "";
-			//TODO:display curOperand in textbox
-		}
-	}
-	if((btValue>="0" && btValue<="9") || btValue=="."){
-		data.curOperand = data.curOperand + btValue;
-		//TODO: display curOperand in textbox
-	}
-	if(btValue=="="){
-		if(data.latestOperator!=null && data.prevOperand!="" && data.curOperand!=""){
-			data.curOperand = operate();
-			data.prevOperand = "";
-			data.latestOperator = null;
-			alert(data.curOperand);
-			//TODO: display curOperand in textbox
-		}
-	}
-	function operate(){
-		switch(data.latestOperator) {
-	    case "+":
-	        return (Number(data.prevOperand) + Number(data.curOperand));
-	    case "-":
-	    	return (Number(data.prevOperand) + Number(data.curOperand));
-	}
-	}
-}
+
 function execute(){
 	handleCalculator("1");
 	handleCalculator("1");
@@ -54,7 +51,7 @@ function execute(){
 	handleCalculator("2");
 	handleCalculator("=");
 }
-execute();
+//execute();
 </script>
 </body>
 </html>
