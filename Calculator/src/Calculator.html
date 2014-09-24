@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+
+<script>
+function dataObject(){
+	this.latestOperator = null;
+	this.prevOperand = "";
+	this.curOperand = "";
+}
+var data = new dataObject();
+function handleClickInput(button){
+	var btValue = button.value;
+	handleCalculator(btValue);
+}
+function handleCalculator(btValue){
+	if(btValue=="+" || btValue=="-"){
+		if(data.curOperand!=""){
+			data.latestOperator = btValue;
+			data.prevOperand = data.curOperand;
+			data.curOperand = "";
+			//TODO:display curOperand in textbox
+		}
+	}
+	if((btValue>="0" && btValue<="9") || btValue=="."){
+		data.curOperand = data.curOperand + btValue;
+		//TODO: display curOperand in textbox
+	}
+	if(btValue=="="){
+		if(data.latestOperator!=null && data.prevOperand!="" && data.curOperand!=""){
+			data.curOperand = operate();
+			data.prevOperand = "";
+			data.latestOperator = null;
+			alert(data.curOperand);
+			//TODO: display curOperand in textbox
+		}
+	}
+	function operate(){
+		switch(data.latestOperator) {
+	    case "+":
+	        return (Number(data.prevOperand) + Number(data.curOperand));
+	    case "-":
+	    	return (Number(data.prevOperand) + Number(data.curOperand));
+	}
+	}
+}
+function execute(){
+	handleCalculator("1");
+	handleCalculator("1");
+	handleCalculator(".");
+	handleCalculator("2");
+	handleCalculator("+");
+	handleCalculator("2");
+	handleCalculator("=");
+}
+execute();
+</script>
+</body>
+</html>
