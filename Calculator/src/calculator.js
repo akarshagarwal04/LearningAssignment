@@ -12,7 +12,7 @@ function handleClickInput(button, textFieldId){
 }
 
 function handleCalculator(btValue,text){
-	if(btValue=="+" || btValue=="-" ){
+	if(btValue=="+" || btValue=="-" || btValue=="*" || btValue=="/"){
 		if(data.latestOperator!=null && data.curOperand!="" && data.prevOperand!=""){
 			data.prevOperand = operate();
 			data.latestOperator = btValue;
@@ -26,16 +26,14 @@ function handleCalculator(btValue,text){
 	}
 	if(btValue=="C"){
 		data.curOperand = "";
-		text.value = data.curOperand;
+		text.value = "";
 	}
 	if((btValue>="0" && btValue<="9") || btValue=="."){
-		data.curOperand = "" + data.curOperand + btValue;
+		data.curOperand = data.curOperand + btValue;
 		text.value = data.curOperand;
 	}
 	if(btValue=="="){
 		if(data.latestOperator!=null && data.prevOperand!="" && data.curOperand!=""){
-			//restore state same as only one operand in memory and that operand would be operated result 
-			//that can be used for further computation
 			data.curOperand = operate();
 			data.prevOperand = "";
 			data.latestOperator = null;
@@ -43,11 +41,6 @@ function handleCalculator(btValue,text){
 		}
 	}
 	function operate(){
-		switch(data.latestOperator) {
-	    case "+":
-	        return (Number(data.prevOperand) + Number(data.curOperand));
-	    case "-":
-	    	return (Number(data.prevOperand) - Number(data.curOperand));
-		}
+		return eval(data.prevOperand+data.latestOperator+data.curOperand);
 	}
 }
