@@ -4,6 +4,8 @@ function dataObject(){
 	this.curOperand = "";
 }
 //TODO: is there any way to encapsulate data and its related functions better
+//Alternatively we can encapsulate all the functions and data in constructor function and can have global object of that function,
+//Need to confirm the approach
 var data = new dataObject();
 function handleClickInput(button, textFieldId){
 	var text = document.getElementById(textFieldId);

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo">Please visit Microsoft!</p>
+
+<script>
+function amountTocoins(amount, coinArray,i, result){
+
+if(amount<=0 || i>=coinArray.length){
+    return result;
+}  
+    if(amount>=coinArray[i]){
+       result[result.length]=coinArray[i];
+       amount = amount-coinArray[i];
+    }
+   return amountTocoins(amount, coinArray, i+1,result);
+}
+var arr = [25, 10, 5,3, 2, 1,10];
+arr = arr.sort(function(a,b){
+   return b-a;
+});
+
+alert(amountTocoins(46, arr,0,[]));
+</script>
+
+</body>
+</html>
