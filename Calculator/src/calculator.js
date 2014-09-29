@@ -1,7 +1,7 @@
 
 // is there any way to encapsulate data and its related functions better
 //Alternatively we can encapsulate all the functions and data in constructor function and can have global object of that function,
-
+//Calculator function is to be used as constructor and contains all the calculator functionality
 function Calculator(){
 	this.data = new dataObject();
 	function dataObject(){
@@ -14,6 +14,7 @@ function Calculator(){
 		var btValue = button.value;
 		handleCalculator(btValue,text,this);
 	}
+	//These function have scope within Calculator function but window level extent.
 	function handleCalculator(btValue,text,calculator){
 		if(btValue=="+" || btValue=="-" || btValue=="*" || btValue=="/"){
 			if(calculator.data.latestOperator!=null && calculator.data.curOperand!="" && calculator.data.prevOperand!=""){
