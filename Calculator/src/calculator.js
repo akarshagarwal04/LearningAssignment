@@ -9,7 +9,7 @@ function Calculator(){
 		this.prevOperand = "";
 		this.curOperand = "";
 	}
-	this.handleClickInput = function handleClickInput(button, textFieldId){
+	this.handleClickInput = function (button, textFieldId){
 		var text = document.getElementById(textFieldId);
 		var btValue = button.value;
 		handleCalculator(btValue,text,this);
